@@ -1,4 +1,4 @@
-var Jimp = require("../jimp.js");
+var Jimp = require("../index.js");
 
 // open a file called "lenna.png"
 var lenna = new Jimp("lenna.png", function (err) {
@@ -83,4 +83,9 @@ var lenna = new Jimp("lenna.png", function (err) {
     this.clone().fade(0.75).write("./output/lenna-fade.png")
         .mirror(false, true).write("./output/lenna-fade-mirror.png")
         .opaque().write("./output/lenna-opaque.png");
+    
+    this.clone().resize(Jimp.AUTO, 1024).write("./output/lenna-resize-auto-2014.png");
+    this.clone().resize(128, Jimp.AUTO).write("./output/lenna-resize-128-auto.png");
+
+    this.clone().scaleToFit(256, 128).write("./output/lenna-scaleToFit-256-128.png");
 });
